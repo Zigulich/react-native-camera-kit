@@ -163,20 +163,12 @@ class CKCamera(context: ThemedReactContext) : FrameLayout(context), LifecycleObs
             // Used to bind the lifecycle of cameras to the lifecycle owner
             cameraProvider = cameraProviderFuture.get()
 
-            // Rotate the image according to device orientation, even when UI orientation is locked
+            // Rotation event listener
             orientationListener = object : OrientationEventListener(context, SensorManager.SENSOR_DELAY_UI) {
                 override fun onOrientationChanged(orientation: Int) {
                     val imageCapture = imageCapture ?: return
                     var newOrientation: Int = imageCapture.targetRotation
-                    if (orientation >= 315 || orientation < 45) {
-                        newOrientation = Surface.ROTATION_0
-                    } else if (orientation in 225..314) {
-                        newOrientation = Surface.ROTATION_90
-                    } else if (orientation in 135..224) {
-                        newOrientation = Surface.ROTATION_180
-                    } else if (orientation in 45..134) {
-                        newOrientation = Surface.ROTATION_270
-                    }
+                   
                     if (newOrientation != imageCapture.targetRotation) {
                         imageCapture.targetRotation = newOrientation
                         onOrientationChange(newOrientation)
