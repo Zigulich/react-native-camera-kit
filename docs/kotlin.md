@@ -2,13 +2,13 @@
 
 1. Open and edit android/build.gradle
 
-Add the `kotlin_version` to `buildscript.ext`
+Add the `kotlinVersion` to `buildscript.ext`
 
 ```
 buildscript {
   ext {
         ...
-        kotlin_version = '1.7.20'
+        kotlinVersion = '1.7.20'
   }
 ```
 
@@ -36,7 +36,7 @@ Add the Kotlin classpath to `buildscript.dependencies`
 dependencies {
     ...
     classpath("com.android.tools.build:gradle:7.0.2") // or recent
-    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
 }
 ```
 
